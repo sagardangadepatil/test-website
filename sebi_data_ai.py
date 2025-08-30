@@ -3,7 +3,6 @@ def extract_pdf_text(pdf_url):
     response = requests.get(pdf_url)
     with open("temp.pdf", "wb") as f:
         f.write(response.content)
-
     doc = fitz.open("temp.pdf")
     text = "\n".join([page.get_text() for page in doc])
     return text
